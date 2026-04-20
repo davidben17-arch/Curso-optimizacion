@@ -1165,7 +1165,7 @@
   <div class="container">
     <p class="section-label reveal">Evaluaciones</p>
     <h2 class="section-title reveal">Entrega de tareas y trabajos</h2>
-    <p class="section-sub reveal">Subí tu archivo directamente a la carpeta del curso en Google Drive. Usá tu nombre y carné en el nombre del archivo.</p>
+    <p class="section-sub reveal">Completá el formulario, adjuntá tu archivo y envialo directamente al profesor. Sin necesidad de Drive ni permisos.</p>
 
     <div class="reveal" style="max-width:560px;">
 
@@ -1173,74 +1173,112 @@
       <div style="background:rgba(251,174,64,0.07); border:1px solid rgba(251,174,64,0.2); border-radius:14px; padding:1.25rem 1.5rem; margin-bottom:1.75rem;">
         <p style="font-size:0.75rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--amber); margin-bottom:0.75rem;">📋 Cómo entregar</p>
         <ol style="padding-left:1.25rem; display:flex; flex-direction:column; gap:0.5rem;">
-          <li style="font-size:0.88rem; color:rgba(255,255,255,0.7);">Nombrá tu archivo así: <strong style="color:white">Tarea1_Apellido_Carné.pdf</strong></li>
-          <li style="font-size:0.88rem; color:rgba(255,255,255,0.7);">Hacé click en el botón de abajo para abrir la carpeta del curso</li>
-          <li style="font-size:0.88rem; color:rgba(255,255,255,0.7);">Arrastrá o subí tu archivo directamente ahí</li>
+          <li style="font-size:0.88rem; color:rgba(255,255,255,0.7);">Nombrá tu archivo: <strong style="color:white">Tarea1_Apellido_Carné.pdf</strong></li>
+          <li style="font-size:0.88rem; color:rgba(255,255,255,0.7);">Completá el formulario con tu nombre, carné y tarea</li>
+          <li style="font-size:0.88rem; color:rgba(255,255,255,0.7);">Adjuntá el archivo y hacé click en <strong style="color:white">Enviar entrega</strong></li>
         </ol>
       </div>
 
-      <!-- Botón Drive -->
-      <a href="https://drive.google.com/drive/folders/19ftuGHgeYqBnV5iCjSNz2S96p8q1DSCn" target="_blank" rel="noopener"
-        style="display:flex; align-items:center; justify-content:center; gap:0.75rem; background:linear-gradient(135deg,var(--amber),var(--coral)); border-radius:12px; padding:1.1rem 2rem; color:var(--navy2); font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:700; text-decoration:none; transition:transform 0.15s, box-shadow 0.15s; box-shadow:0 4px 20px rgba(251,174,64,0.25);"
-        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(251,174,64,0.35)'"
-        onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(251,174,64,0.25)'">
-        <svg width="22" height="22" viewBox="0 0 87.3 78" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6.6 66.85l3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3L27.5 53H0c0 1.55.4 3.1 1.2 4.5z" fill="#0066DA"/>
-          <path d="M43.65 25L29.9 1.2C28.55 2 27.4 3.1 26.6 4.5L1.2 48.5C.4 49.9 0 51.45 0 53h27.5z" fill="#00AC47"/>
-          <path d="M73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5H60l5.55 10.5z" fill="#EA4335"/>
-          <path d="M43.65 25L57.4 1.2C56.05.4 54.5 0 52.9 0H34.4c-1.6 0-3.15.45-4.5 1.2z" fill="#00832D"/>
-          <path d="M60 53H27.5L13.75 76.8c1.35.8 2.9 1.2 4.5 1.2h50.5c1.6 0 3.15-.4 4.5-1.2z" fill="#2684FC"/>
-          <path d="M73.4 26.5l-12.65-21.9c-.8-1.4-1.95-2.5-3.3-3.3L43.65 25 60 53h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#FFBA00"/>
-        </svg>
-        Subir entrega a Google Drive
-      </a>
+      <!-- Formulario Formspree -->
+      <form id="form-entrega" action="https://formspree.io/f/xojywkvo" method="POST" enctype="multipart/form-data"
+        style="display:flex; flex-direction:column; gap:1rem;">
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div>
+            <label style="font-size:0.75rem; font-weight:700; color:rgba(255,255,255,0.5); letter-spacing:.05em; text-transform:uppercase; display:block; margin-bottom:.4rem;">Nombre completo</label>
+            <input type="text" name="nombre" required placeholder="Ej: María Rodríguez"
+              style="width:100%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:.75rem 1rem; color:white; font-size:0.9rem; outline:none;"
+              onfocus="this.style.borderColor='var(--amber)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+          </div>
+          <div>
+            <label style="font-size:0.75rem; font-weight:700; color:rgba(255,255,255,0.5); letter-spacing:.05em; text-transform:uppercase; display:block; margin-bottom:.4rem;">Carné UCR</label>
+            <input type="text" name="carne" required placeholder="Ej: B12345"
+              style="width:100%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:.75rem 1rem; color:white; font-size:0.9rem; outline:none;"
+              onfocus="this.style.borderColor='var(--amber)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+          </div>
+        </div>
+
+        <div>
+          <label style="font-size:0.75rem; font-weight:700; color:rgba(255,255,255,0.5); letter-spacing:.05em; text-transform:uppercase; display:block; margin-bottom:.4rem;">Tarea / entrega</label>
+          <select name="tarea" required
+            style="width:100%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:.75rem 1rem; color:white; font-size:0.9rem; outline:none; cursor:pointer;"
+            onfocus="this.style.borderColor='var(--amber)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            <option value="" disabled selected style="background:#0d2b55;">Seleccioná la entrega...</option>
+            <option value="Tarea 1" style="background:#0d2b55;">Tarea 1</option>
+            <option value="Tarea 2" style="background:#0d2b55;">Tarea 2</option>
+            <option value="Tarea 3" style="background:#0d2b55;">Tarea 3</option>
+            <option value="Tarea 4" style="background:#0d2b55;">Tarea 4</option>
+            <option value="Caso I" style="background:#0d2b55;">Caso I — Programación Entera</option>
+            <option value="Caso II" style="background:#0d2b55;">Caso II — Flujos de Redes</option>
+            <option value="Artículo Académico" style="background:#0d2b55;">Exposición Artículo Académico</option>
+            <option value="Otro" style="background:#0d2b55;">Otro</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="font-size:0.75rem; font-weight:700; color:rgba(255,255,255,0.5); letter-spacing:.05em; text-transform:uppercase; display:block; margin-bottom:.4rem;">Archivo adjunto</label>
+          <label id="file-label"
+            style="display:flex; align-items:center; justify-content:center; gap:.75rem; background:rgba(255,255,255,0.04); border:2px dashed rgba(255,255,255,0.15); border-radius:10px; padding:1.25rem; cursor:pointer; transition:border-color .2s;"
+            onmouseover="this.style.borderColor='var(--amber)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'">
+            <span style="font-size:1.4rem;">📎</span>
+            <span id="file-name-label" style="font-size:0.88rem; color:rgba(255,255,255,0.5);">Hacé click para adjuntar tu archivo</span>
+            <input type="file" name="archivo" id="file-input" required accept=".pdf,.xlsx,.xls,.docx,.zip"
+              style="display:none;" onchange="document.getElementById('file-name-label').textContent = this.files[0] ? this.files[0].name : 'Hacé click para adjuntar tu archivo'">
+          </label>
+          <p style="font-size:0.72rem; color:rgba(255,255,255,0.3); margin-top:.4rem;">Formatos aceptados: PDF, Excel, Word, ZIP · Máx. 10 MB</p>
+        </div>
+
+        <div>
+          <label style="font-size:0.75rem; font-weight:700; color:rgba(255,255,255,0.5); letter-spacing:.05em; text-transform:uppercase; display:block; margin-bottom:.4rem;">Comentario (opcional)</label>
+          <textarea name="comentario" placeholder="Alguna nota para el profesor..." rows="2"
+            style="width:100%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:.75rem 1rem; color:white; font-size:0.9rem; outline:none; resize:vertical; font-family:inherit;"
+            onfocus="this.style.borderColor='var(--amber)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'"></textarea>
+        </div>
+
+        <button type="submit"
+          style="display:flex; align-items:center; justify-content:center; gap:.75rem; background:linear-gradient(135deg,var(--amber),var(--coral)); border:none; border-radius:12px; padding:1rem 2rem; color:var(--navy2); font-size:1rem; font-weight:700; cursor:pointer; transition:transform .15s, box-shadow .15s; box-shadow:0 4px 20px rgba(251,174,64,0.25);"
+          onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(251,174,64,0.4)'"
+          onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(251,174,64,0.25)'">
+          <span>📤</span> Enviar entrega
+        </button>
+
+        <!-- Mensaje de éxito -->
+        <div id="entrega-ok" style="display:none; background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.3); border-radius:10px; padding:1rem; text-align:center;">
+          <p style="color:#4ade80; font-weight:700;">✅ ¡Entrega enviada con éxito!</p>
+          <p style="color:rgba(255,255,255,0.6); font-size:0.85rem; margin-top:.25rem;">El profesor recibirá tu archivo por correo.</p>
+        </div>
+
+      </form>
 
       <p style="font-size:0.75rem; color:rgba(255,255,255,0.3); margin-top:1rem; text-align:center;">
-        Acceso directo a la carpeta del curso · Tus archivos llegan al profesor automáticamente
+        Tu entrega llega directamente al profesor · Sin necesidad de cuenta ni permisos
       </p>
-
-      <!-- Resultados Quiz #1 -->
-      <div style="margin-top:2rem; border-top:1px solid rgba(255,255,255,0.08); padding-top:1.75rem;">
-        <p style="font-size:0.75rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--green); margin-bottom:0.6rem;">✅ Resultados publicados</p>
-        <p style="font-size:0.88rem; color:rgba(255,255,255,0.6); margin-bottom:1.25rem; line-height:1.6;">
-          Ya podés consultar tu nota del <strong style="color:white">Quiz #1</strong>, incluyendo el enunciado de tu problema, la solución correcta y la retroalimentación detallada por componente.
-        </p>
-        <a href="https://resultados1quiz1.netlify.app/" target="_blank" rel="noopener"
-          style="display:flex; align-items:center; justify-content:center; gap:0.75rem; background:rgba(45,155,111,0.15); border:1.5px solid var(--green); border-radius:12px; padding:1rem 2rem; color:var(--green); font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:700; text-decoration:none; transition:all 0.2s;"
-          onmouseover="this.style.background='rgba(45,155,111,0.28)';this.style.transform='translateY(-2px)'"
-          onmouseout="this.style.background='rgba(45,155,111,0.15)';this.style.transform=''">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
-          </svg>
-          Ver mis resultados · Quiz #1
-        </a>
-        <p style="font-size:0.72rem; color:rgba(255,255,255,0.25); margin-top:0.75rem; text-align:center;">
-          Ingresá con tu número de carné · Nota, enunciado y retroalimentación completa
-        </p>
-      </div>
-
-      <!-- Resultados Tarea 1 -->
-      <div style="margin-top:1.75rem; border-top:1px solid rgba(255,255,255,0.08); padding-top:1.75rem;">
-        <p style="font-size:0.75rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--amber); margin-bottom:0.6rem;">✅ Resultados publicados</p>
-        <p style="font-size:0.88rem; color:rgba(255,255,255,0.6); margin-bottom:1.25rem; line-height:1.6;">
-          Ya podés consultar la retroalimentación de la <strong style="color:white">Tarea 1 — Energía Solar en Casa</strong>, con la evaluación por componente, datos de campo y observación general de tu grupo.
-        </p>
-        <a href="https://resultadostarea1.netlify.app/" target="_blank" rel="noopener"
-          style="display:flex; align-items:center; justify-content:center; gap:0.75rem; background:rgba(200,146,10,0.15); border:1.5px solid var(--amber); border-radius:12px; padding:1rem 2rem; color:var(--amber); font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:700; text-decoration:none; transition:all 0.2s;"
-          onmouseover="this.style.background='rgba(200,146,10,0.28)';this.style.transform='translateY(-2px)'"
-          onmouseout="this.style.background='rgba(200,146,10,0.15)';this.style.transform=''">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
-          </svg>
-          Ver retroalimentación · Tarea 1
-        </a>
-        <p style="font-size:0.72rem; color:rgba(255,255,255,0.25); margin-top:0.75rem; text-align:center;">
-          Ingresá con tu número de carné · Evaluación por componente y observación general
-        </p>
-      </div>
 
     </div>
   </div>
+
+  <script>
+    document.getElementById('form-entrega').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = this;
+      var data = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function(r) {
+        if (r.ok) {
+          form.style.display = 'none';
+          document.getElementById('entrega-ok').style.display = 'block';
+        } else {
+          alert('Hubo un error al enviar. Intentá de nuevo o escribile al profesor directamente.');
+        }
+      }).catch(function() {
+        alert('Error de conexión. Revisá tu internet e intentá de nuevo.');
+      });
+    });
+  </script>
+
 </section>
 
 
